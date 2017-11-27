@@ -36,37 +36,37 @@ def obscured_ip(ip):
                     ip = ipv4.group('ip')
 
     if nrofdots == 3:
-        for match in re.finditer(r'(?P<a>([0-9A-Fa-fx]+)\.)(?P<b>([0-9A-Fa-fx]'
-                                 '+)\.)(?P<c>([0-9A-Fa-fx]+)\.)(?P<d>[0-9A-Fa-'
+        for match in re.finditer(r'(?P<a>([0-9A-Fa-fx]+))\.(?P<b>([0-9A-Fa-fx]'
+                                 '+))\.(?P<c>([0-9A-Fa-fx]+))\.(?P<d>[0-9A-Fa-'
                                  'fx]+)', ip):
             a, b, c, d = match.group('a'), match.group('b'), \
                          match.group('c'), match.group('d')
             for value in re.finditer(r'(?P<a>^0x[0-9A-Fa-f]+)',
                                      match.group('a')):
-                a = (str(int(value.group('a'), 16))) + \
-                     '.' if int(value.group('a'), 16) < \
+                a = (str(int(value.group('a'), 16))) \
+                     if int(value.group('a'), 16) < \
                      256 else match.group('a')
             for value in re.finditer(r'(?P<a>^0[0-7]+)', match.group('a')):
-                a = (str(int(value.group('a'), 8))) + \
-                     '.' if int(value.group('a'), 8) < \
+                a = (str(int(value.group('a'), 8))) \
+                     if int(value.group('a'), 8) < \
                      256 else match.group('a')
             for value in re.finditer(r'(?P<b>^0x[0-9A-Fa-f]+)',
                                      match.group('b')):
-                b = (str(int(value.group('b'), 16))) + \
-                     '.' if int(value.group('b'), 16) < \
+                b = (str(int(value.group('b'), 16))) \
+                     if int(value.group('b'), 16) < \
                      256 else match.group('b')
             for value in re.finditer(r'(?P<b>^0[0-7]+)', match.group('b')):
-                b = (str(int(value.group('b'), 8))) + \
-                     '.' if int(value.group('b'), 8) < \
+                b = (str(int(value.group('b'), 8))) \
+                     if int(value.group('b'), 8) < \
                      256 else match.group('b')
             for value in re.finditer(r'(?P<c>^0x[0-9A-Fa-f]+)',
                                      match.group('c')):
-                c = (str(int(value.group('c'), 16))) + \
-                     '.' if int(value.group('c'), 16) < \
+                c = (str(int(value.group('c'), 16))) \
+                     if int(value.group('c'), 16) < \
                      256 else match.group('c')
             for value in re.finditer(r'(?P<c>^0[0-7]+)', match.group('c')):
-                c = (str(int(value.group('c'), 8))) + \
-                     '.' if int(value.group('c'), 8) < \
+                c = (str(int(value.group('c'), 8))) \
+                     if int(value.group('c'), 8) < \
                      256 else match.group('c')
             for value in re.finditer(r'(?P<d>^0x[0-9A-Fa-f]+)',
                                      match.group('d')):
@@ -79,63 +79,63 @@ def obscured_ip(ip):
                                                            group('d'), 8) < \
                                                            256 else match. \
                                                            group('d')
-            print('[+] '+a+b+c+d)
+            print('[+] '+a+'.'+b+'.'+c+'.'+d)
     elif nrofdots == 2:
-        for match in re.finditer(r'(?P<a>([0-9A-Fa-fx]+)\.)(?P<b>([0-9A-Fa-fx]'
-                                 '+)\.)(?P<c>[0-9A-Fa-fx]+)', ip):
+        for match in re.finditer(r'(?P<a>([0-9A-Fa-fx]+))\.(?P<b>([0-9A-Fa-fx]'
+                                 '+))\.(?P<c>[0-9A-Fa-fx]+)', ip):
             a, b, c = match.group('a'), match.group('b'), match.group('c')
             for value in re.finditer(r'(?P<a>^0[0-7]+)', match.group('a')):
-                a = (str(int(value.group('a'), 8))) + \
-                     '.' if int(value.group('a'), 8) < \
+                a = (str(int(value.group('a'), 8))) \
+                     if int(value.group('a'), 8) < \
                      256 else match.group('a')
             for value in re.finditer(r'(?P<a>^0x[0-9A-Fa-f]+)',
                                      match.group('a')):
-                a = (str(int(value.group('a'), 16))) + \
-                     '.' if int(value.group('a'), 16) < \
+                a = (str(int(value.group('a'), 16))) \
+                     if int(value.group('a'), 16) < \
                      256 else match.group('a')
             for value in re.finditer(r'(?P<b>^0[0-7]+)',
                                      match.group('b')):
-                b = (str(int(value.group('b'), 8))) + \
-                     '.' if int(value.group('b'), 8) < \
+                b = (str(int(value.group('b'), 8))) \
+                     if int(value.group('b'), 8) < \
                      256 else match.group('b')
             for value in re.finditer(r'(?P<b>^0x[0-9A-Fa-f]+)',
                                      match.group('b')):
-                b = (str(int(value.group('b'), 16))) + \
-                     '.' if int(value.group('b'), 16) < \
+                b = (str(int(value.group('b'), 16))) \
+                     if int(value.group('b'), 16) < \
                      256 else match.group('b')
             for value in re.finditer(r'(?P<c>^0[0-7]+)',
                                      match.group('c')):
-                c = (str(int(value.group('c'), 8))) + '.'
+                c = (str(int(value.group('c'), 8)))
             for value in re.finditer(r'(?P<c>^0x[0-9A-Fa-f]+)',
                                      match.group('c')):
-                c = (str(int(value.group('c'), 16))) + '.'
+                c = (str(int(value.group('c'), 16)))
             nr1 = int(int(c)/256)
             nr2 = int(c)-nr1*256
-            print('[+] '+a+b+str(nr1)+'.'+str(nr2))
+            print('[+] '+a+'.'+b+'.'+str(nr1)+'.'+str(nr2))
     elif nrofdots == 1:
-        for match in re.finditer(r'(?P<a>([0-9A-Fa-fx]+)\.)(?P<b>[0-9A-Fa-fx]'
+        for match in re.finditer(r'(?P<a>([0-9A-Fa-fx]+))\.(?P<b>[0-9A-Fa-fx]'
                                  '+)', ip):
             a, b = match.group('a'), match.group('b')
             for value in re.finditer(r'(?P<a>^0x[0-9A-Fa-f]+)',
                                      match.group('a')):
-                a = (str(int(value.group('a'), 16))) + \
-                     '.' if int(value.group('a'), 16) < \
+                a = (str(int(value.group('a'), 16))) \
+                     if int(value.group('a'), 16) < \
                      256 else match.group('a')
             for value in re.finditer(r'(?P<a>^0[0-7]+)',
                                      match.group('a')):
-                a = (str(int(value.group('a'), 8))) + \
-                     '.' if int(value.group('a'), 8) < \
+                a = (str(int(value.group('a'), 8))) \
+                     if int(value.group('a'), 8) < \
                      256 else match.group('a')
             for value in re.finditer(r'(?P<b>^0x[0-9A-Fa-f]+)',
                                      match.group('b')):
-                b = (str(int(value.group('b'), 16))) + '.'
+                b = (str(int(value.group('b'), 16)))
             for value in re.finditer(r'(?P<b>^0[0-7]+)', match.group('b')):
-                b = (str(int(value.group('b'), 8))) + '.'
+                b = (str(int(value.group('b'), 8)))
             nr1 = int(int(b)/256**2)
             nr2 = int(b)-nr1*256**2
             nr3 = int(nr2/256)
             nr4 = nr2-nr3*256
-            print('[+] '+a+str(nr1)+'.'+str(nr3)+'.'+str(nr4))
+            print('[+] '+a+'.'+str(nr1)+'.'+str(nr3)+'.'+str(nr4))
     elif nrofdots == 0:
         for match in re.finditer(r'(?P<a>([0-9A-Fa-fx]+))', ip):
             a = match.group('a')
